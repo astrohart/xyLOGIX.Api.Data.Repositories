@@ -91,6 +91,20 @@
   <ItemGroup>
     <Content Include="1382_cogs.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\xyLOGIX.Api.Data.Repositories.Events\xyLOGIX.Api.Data.Repositories.Events.csproj">
+      <Project>{62a5d5ad-d1eb-4d6d-8ba0-45236693d3ed}</Project>
+      <Name>xyLOGIX.Api.Data.Repositories.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Api.Data.Repositories.Interfaces\xyLOGIX.Api.Data.Repositories.Interfaces.csproj">
+      <Project>{ed776ead-7091-452a-8e64-07cba0c2396a}</Project>
+      <Name>xyLOGIX.Api.Data.Repositories.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Api.Data.Repositories\xyLOGIX.Api.Data.Repositories.csproj">
+      <Project>{84c1f71a-aaa4-4a08-9728-19e710965e4d}</Project>
+      <Name>xyLOGIX.Api.Data.Repositories</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
