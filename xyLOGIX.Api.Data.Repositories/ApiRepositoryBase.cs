@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using xyLOGIX.Api.Data.Repositories.Interfaces;
 
 namespace xyLOGIX.Api.Data.Repositories
 {
