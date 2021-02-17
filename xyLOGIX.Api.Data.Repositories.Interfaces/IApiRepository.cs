@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using xyLOGIX.Api.Data.Iterables.Interfaces;
+using xyLOGIX.Api.Data.Iterators.Events;
 
 namespace xyLOGIX.Api.Data.Repositories.Interfaces
 {
@@ -43,6 +43,11 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// from 1 by setting this property.
         /// </remarks>
         int PageSize { get; set; }
+
+        /// <summary>
+        /// Occurs when an exception is thrown during the iteration process.
+        /// </summary>
+        event IterationErrorEventHandler IterationError;
 
         /// <summary>
         /// If offered by the endpoint, uses any DELETE request exposed to
@@ -232,7 +237,7 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// available collection of data elements in the server's database, even
         /// with paging.
         /// </exception>
-        IIterable<T> GetAll();
+        IEnumerable<T> GetAll();
 
         /// <summary>
         /// Calls a PUT method on the target REST API (if supported) to change

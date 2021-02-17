@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using xyLOGIX.Api.Data.Iterables.Interfaces;
+using xyLOGIX.Api.Data.Iterators.Events;
 using xyLOGIX.Api.Data.Repositories.Interfaces;
 
 namespace xyLOGIX.Api.Data.Repositories
@@ -27,6 +29,8 @@ namespace xyLOGIX.Api.Data.Repositories
     public abstract class ApiRepositoryBase<T> : IApiRepository<T>
         where T : class
     {
+        private readonly IIterable<T> _iterable;
+
         /// <summary>
         /// Constructs a new instance of
         /// <see
@@ -40,10 +44,19 @@ namespace xyLOGIX.Api.Data.Repositories
         /// <para />
         /// The default value of this parameter is one.
         /// </param>
-        protected ApiRepositoryBase(int pageSize = 1)
+        protected ApiRepositoryBase(IIterable<T> iterator, int pageSize = 1)
         {
+            if (pageSize <= 0)
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            _iterable = iterator ??
+                        throw new ArgumentNullException(nameof(iterator));
             PageSize = pageSize;
         }
+
+        /// <summary>
+        /// Occurs when an exception is thrown during the iteration process.
+        /// </summary>
+        public event IterationErrorEventHandler IterationError;
 
         /// <summary>
         /// Gets or sets the page size, i.e., how many elements to request at a
@@ -248,7 +261,42 @@ namespace xyLOGIX.Api.Data.Repositories
         /// available collection of data elements in the server's database, even
         /// with paging.
         /// </exception>
-        public abstract IIterable<T> GetAll();
+        public IEnumerable<T> GetAll()
+        {
+            var result = new List<T>();
+
+            var iterator = _iterable.GetIterator();
+            if (iterator == null)
+                return result;
+
+            try
+            {
+                var current = default(T);
+
+                do
+                {
+                    current = iterator.GetNext();
+                    if (current == null) break;
+                    result.Add(current);
+                } while (current != null && iterator.HasNext());
+            }
+            catch (Exception ex)
+            {
+                //OnIterationError(
+                //    new IterationErrorEventArgs(
+                //        new IteratorException(
+                //            "A problem was occurred during the iteration operation.",
+                //            ex
+                //        )
+                //    )
+                //);
+
+                // in the event an exception occurred, just return the empty list
+                result = new List<T>();
+            }
+
+            return (IIterable<T>) result;
+        }
 
         /// <summary>
         /// Calls a PUT method on the target REST API (if supported) to change
@@ -280,5 +328,20 @@ namespace xyLOGIX.Api.Data.Repositories
         /// functionality.
         /// </exception>
         public abstract void Update(T recordToUpdate);
+
+        /// <summary>
+        /// Raises the
+        /// <see
+        ///     cref="E:xyLOGIX.Api.Data.Iterators.IteratorBase.IterationError" />
+        /// event.
+        /// </summary>
+        /// <param name="e">
+        /// A
+        /// <see
+        ///     cref="T:xyLOGIX.Api.Data.Iterators.Events.IterationErrorEventArgs" />
+        /// that contains the event data.
+        /// </param>
+        protected virtual void OnIterationError(IterationErrorEventArgs e)
+            => IterationError?.Invoke(this, e);
     }
 }

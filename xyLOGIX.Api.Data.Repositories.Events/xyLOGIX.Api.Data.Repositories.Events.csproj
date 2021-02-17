@@ -68,6 +68,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IterationErrorEventArgs.cs" />
+    <Compile Include="IterationErrorEventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -83,6 +85,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1382_cogs.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\xyLOGIX.Api.Data.Iterators\xyLOGIX.Api.Data.Iterators.Exceptions\xyLOGIX.Api.Data.Iterators.Exceptions.csproj">
+      <Project>{C86E05F7-04BB-4A45-B264-B3BF976D5B04}</Project>
+      <Name>xyLOGIX.Api.Data.Iterators.Exceptions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

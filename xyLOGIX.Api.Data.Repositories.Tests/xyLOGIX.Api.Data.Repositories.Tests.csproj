@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\NUnit.3.12.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <ApplicationIcon>1382_cogs.ico</ApplicationIcon>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <ProjectGuid>{6A5BF1D0-66A7-4350-A26D-15A0CF0DDB5A}</ProjectGuid>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -65,9 +66,6 @@
     <RootNamespace>xyLOGIX.Api.Data.Repositories.Tests</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=3.12.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
@@ -86,30 +84,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="1382_cogs.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\xyLOGIX.Api.Data.Repositories.Events\xyLOGIX.Api.Data.Repositories.Events.csproj">
-      <Project>{62a5d5ad-d1eb-4d6d-8ba0-45236693d3ed}</Project>
-      <Name>xyLOGIX.Api.Data.Repositories.Events</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\xyLOGIX.Api.Data.Repositories.Interfaces\xyLOGIX.Api.Data.Repositories.Interfaces.csproj">
-      <Project>{ed776ead-7091-452a-8e64-07cba0c2396a}</Project>
-      <Name>xyLOGIX.Api.Data.Repositories.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\xyLOGIX.Api.Data.Repositories\xyLOGIX.Api.Data.Repositories.csproj">
-      <Project>{84c1f71a-aaa4-4a08-9728-19e710965e4d}</Project>
-      <Name>xyLOGIX.Api.Data.Repositories</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.12.0\build\NUnit.props'))" />
-  </Target>
 </Project>
