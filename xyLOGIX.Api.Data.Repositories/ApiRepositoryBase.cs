@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using xyLOGIX.Api.Data.Iterables.Interfaces;
 using xyLOGIX.Api.Data.Repositories.Interfaces;
 
 namespace xyLOGIX.Api.Data.Repositories
@@ -24,7 +25,7 @@ namespace xyLOGIX.Api.Data.Repositories
     /// methods this interface exposes, given varying target REST API use-case
     /// and support scenarios.
     /// </remarks>
-    public abstract class ApiRepositoryBase<T> : IApiRepository<T>
+    public abstract class ApiRepositoryBase<T> : IApiRepository<T>  where T : class
     {
         /// <summary>
         /// Constructs a new instance of
@@ -247,7 +248,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// available collection of data elements in the server's database, even
         /// with paging.
         /// </exception>
-        public abstract IEnumerable<T> GetAll();
+        public abstract IIterable<T> GetAll();
 
         /// <summary>
         /// Calls a PUT method on the target REST API (if supported) to change

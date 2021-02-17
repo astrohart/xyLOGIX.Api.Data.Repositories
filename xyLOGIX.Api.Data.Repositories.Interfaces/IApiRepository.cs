@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using xyLOGIX.Api.Data.Iterables.Interfaces;
 
 namespace xyLOGIX.Api.Data.Repositories.Interfaces
 {
@@ -26,7 +27,7 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
     /// methods this interface exposes, given varying target REST API use-case
     /// and support scenarios.
     /// </remarks>
-    public interface IApiRepository<T>
+    public interface IApiRepository<T> where T : class
     {
         /// <summary>
         /// Gets or sets the page size, i.e., how many elements to request at a
@@ -231,7 +232,7 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// available collection of data elements in the server's database, even
         /// with paging.
         /// </exception>
-        IEnumerable<T> GetAll();
+        IIterable<T> GetAll();
 
         /// <summary>
         /// Calls a PUT method on the target REST API (if supported) to change

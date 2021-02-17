@@ -86,6 +86,10 @@
     <Content Include="1382_cogs.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\xyLOGIX.Api.Data.Iterables\xyLOGIX.Api.Data.Iterables.Interfaces\xyLOGIX.Api.Data.Iterables.Interfaces.csproj">
+      <Project>{B71D1A36-9468-45A6-8C6D-B60F35BC561A}</Project>
+      <Name>xyLOGIX.Api.Data.Iterables.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\xyLOGIX.Api.Data.Repositories.Interfaces\xyLOGIX.Api.Data.Repositories.Interfaces.csproj">
       <Project>{ED776EAD-7091-452A-8E64-07CBA0C2396A}</Project>
       <Name>xyLOGIX.Api.Data.Repositories.Interfaces</Name>
