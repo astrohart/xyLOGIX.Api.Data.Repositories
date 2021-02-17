@@ -1,7 +1,7 @@
 using System;
 using xyLOGIX.Api.Data.Iterators.Exceptions;
 
-namespace xyLOGIX.Api.Data.Iterators.Events
+namespace xyLOGIX.Api.Data.Repositories.Events
 {
    /// <summary>
    /// Defines the data that is passed by all events of type
@@ -12,7 +12,7 @@ namespace xyLOGIX.Api.Data.Iterators.Events
       /// <summary>
       /// Creates a new instance of
       /// <see
-      ///    cref="T:xyLOGIX.Api.Data.Iterators.Events.IterationErrorEventArgs" />
+      ///    cref="T:xyLOGIX.Api.Data.Repositories.Events.IterationErrorEventArgs" />
       /// and
       /// returns a reference to it.
       /// </summary>

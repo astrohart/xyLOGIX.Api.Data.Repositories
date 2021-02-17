@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using xyLOGIX.Api.Data.Iterables.Interfaces;
 using xyLOGIX.Api.Data.Iterators.Events;
+using xyLOGIX.Api.Data.Repositories.Events;
 using xyLOGIX.Api.Data.Repositories.Interfaces;
 
 namespace xyLOGIX.Api.Data.Repositories

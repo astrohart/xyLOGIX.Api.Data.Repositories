@@ -1,3 +1,5 @@
+using xyLOGIX.Api.Data.Repositories.Events;
+
 namespace xyLOGIX.Api.Data.Iterators.Events
 {
    /// <summary>
