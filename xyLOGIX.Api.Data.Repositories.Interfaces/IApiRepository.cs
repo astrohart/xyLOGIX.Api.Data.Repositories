@@ -147,8 +147,8 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// . The first element for which the
         /// <paramref
         ///     name="predicate" />
-        /// evaluates to <c>true</c> is then returned,
-        /// or <c>null</c> if an error occurred or the matching element was
+        /// evaluates to <c>true</c> is then returned, or
+        /// <c>null</c> if an error occurred or the matching element was
         /// otherwise not found.
         /// </returns>
         /// <remarks>
@@ -226,8 +226,8 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// accesses the target REST API in the event the operation was not successful.
         /// </exception>
         /// <exception cref="T:ArgumentNullException">
-        /// Thrown if the required parameter, <paramref name="searchParams" />
-        /// , is set to a <c>null</c> reference.
+        /// Thrown if the required parameter, <paramref name="searchParams" /> ,
+        /// is set to a <c>null</c> reference.
         /// </exception>
         /// <exception cref="T:System.NotSupportedException">
         /// Might be if the target API does not support the concept of pagination.
