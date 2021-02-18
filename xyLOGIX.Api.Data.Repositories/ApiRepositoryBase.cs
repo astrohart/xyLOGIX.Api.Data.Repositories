@@ -303,6 +303,16 @@ namespace xyLOGIX.Api.Data.Repositories
             if (iterator == null)
                 return result;
 
+            // save a backup of the current page size configured for
+            // the iterator.  For this operation only, we will ramp the
+            // page size to the maximum, in an effort to minimize the
+            // number of calls to the API, in order to limit the amount
+            // of requests.
+            var priorPageSize = iterator.PageSize;
+
+            if (MaxPageSize >= 1)
+                iterator.PageSize = MaxPageSize;
+
             try
             {
                 var current = default(T);
@@ -328,6 +338,9 @@ namespace xyLOGIX.Api.Data.Repositories
                 // in the event an exception occurred, just return the empty list
                 result = new List<T>();
             }
+
+            // restore the prior value for the iterator object's page size.
+            iterator.PageSize = priorPageSize;
 
             return (IIterable<T>) result;
         }

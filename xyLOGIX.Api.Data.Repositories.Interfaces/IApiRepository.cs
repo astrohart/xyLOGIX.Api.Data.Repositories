@@ -30,6 +30,16 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
     public interface IApiRepository<T> where T : class
     {
         /// <summary>
+        /// Gets or sets the maximum number of elements per page that the API
+        /// will allow to be fetched.
+        /// </summary>
+        /// <remarks>
+        /// This quantity is specified by nearly every REST API out there. This
+        /// property is set by a required constructor parameter.
+        /// </remarks>
+        int MaxPageSize { get; }
+
+        /// <summary>
         /// Gets or sets the page size, i.e., how many elements to request at a
         /// time from the target REST API.
         /// </summary>
@@ -43,16 +53,6 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// from 1 by setting this property.
         /// </remarks>
         int PageSize { get; set; }
-
-        /// <summary>
-        /// Gets or sets the maximum number of elements per page that the API
-        /// will allow to be fetched.
-        /// </summary>
-        /// <remarks>
-        /// This is an abstract property because this quantity is different for
-        /// every target REST API.
-        /// </remarks>
-        int MaxPageSize { get; }
 
         /// <summary>
         /// Occurs when an exception is thrown during the iteration process.
