@@ -46,12 +46,18 @@ namespace xyLOGIX.Api.Data.Repositories
         /// <para />
         /// The default value of this parameter is one.
         /// </param>
-        protected ApiRepositoryBase(IIterable<T> iterator, int pageSize = 1)
+        /// <param name="maxPageSize">
+        /// (Required.) Integer value specifying the maximum number of entries
+        /// the API will fetch in a single method call. This varies depending on
+        /// the particular REST API in use, therefore this is a constructor parameter.
+        /// </param>
+        protected ApiRepositoryBase(IIterable<T> iterable, int pageSize = 1,
+            int maxPageSize = 100)
         {
             if (pageSize <= 0)
                 throw new ArgumentOutOfRangeException(nameof(pageSize));
-            _iterable = iterator ??
-                        throw new ArgumentNullException(nameof(iterator));
+            _iterable = iterable ??
+                        throw new ArgumentNullException(nameof(iterable));
             PageSize = pageSize;
         }
 
@@ -59,6 +65,16 @@ namespace xyLOGIX.Api.Data.Repositories
         /// Occurs when an exception is thrown during the iteration process.
         /// </summary>
         public event IterationErrorEventHandler IterationError;
+
+        /// <summary>
+        /// Gets or sets the maximum number of elements per page that the API
+        /// will allow to be fetched.
+        /// </summary>
+        /// <remarks>
+        /// This is an abstract property because this quantity is different for
+        /// every target REST API.
+        /// </remarks>
+        public abstract int MaxPageSize { get; protected set; }
 
         /// <summary>
         /// Gets or sets the page size, i.e., how many elements to request at a
@@ -268,6 +284,7 @@ namespace xyLOGIX.Api.Data.Repositories
             var result = new List<T>();
 
             var iterator = _iterable.GetIterator();
+
             if (iterator == null)
                 return result;
 

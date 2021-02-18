@@ -45,6 +45,16 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         int PageSize { get; set; }
 
         /// <summary>
+        /// Gets or sets the maximum number of elements per page that the API
+        /// will allow to be fetched.
+        /// </summary>
+        /// <remarks>
+        /// This is an abstract property because this quantity is different for
+        /// every target REST API.
+        /// </remarks>
+        int MaxPageSize { get; }
+
+        /// <summary>
         /// Occurs when an exception is thrown during the iteration process.
         /// </summary>
         event IterationErrorEventHandler IterationError;
