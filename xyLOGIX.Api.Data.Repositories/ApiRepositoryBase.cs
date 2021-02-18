@@ -16,7 +16,7 @@ namespace xyLOGIX.Api.Data.Repositories
     /// Name -- should be that of a concrete type -- of the type of a POCO that
     /// specifies a single element of the collection exposed by this repository.
     /// <para />
-    /// An interface name may be used; implementers must then adapt their
+    /// An interface name may be used; however, implementers must then adapt their
     /// methods' outputs to the interface specified, in this case.
     /// <para />
     /// Implementers and clients are cautioned that if this type parameter is
