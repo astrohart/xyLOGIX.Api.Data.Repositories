@@ -32,6 +32,14 @@ namespace xyLOGIX.Api.Data.Repositories
     public abstract class ApiRepositoryBase<T> : IApiRepository<T>
         where T : class
     {
+        /// <summary>
+        /// Reference to an instance of an object that implements the
+        /// <see
+        ///     cref="T:xyLOGIX.Api.Data.Iterables.Interfaces.IIterable{T}" />
+        /// interface. This objects provides us with data. It's kind of like the
+        /// DbContext field we utilize in a Repository class that is used in
+        /// Entity Framework.
+        /// </summary>
         private readonly IIterable<T> _iterable;
 
         /// <summary>
