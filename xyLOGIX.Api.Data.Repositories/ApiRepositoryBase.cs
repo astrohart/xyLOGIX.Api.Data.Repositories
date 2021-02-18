@@ -60,7 +60,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// the API will fetch in a single method call. This varies depending on
         /// the particular REST API in use, therefore this is a constructor parameter.
         /// </param>
-        /// <exception cref="T:ArgumentNullException">
+        /// <exception cref="T:System.ArgumentNullException">
         /// Thrown if the required parameter, <paramref name="iterable" />, is
         /// passed a <c>null</c> value.
         /// </exception>
