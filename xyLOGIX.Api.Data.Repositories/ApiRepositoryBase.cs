@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using xyLOGIX.Api.Data.Iterables.Interfaces;
 using xyLOGIX.Api.Data.Iterators.Events;
+using xyLOGIX.Api.Data.Iterators.Exceptions;
 using xyLOGIX.Api.Data.Repositories.Events;
 using xyLOGIX.Api.Data.Repositories.Interfaces;
 
@@ -283,14 +284,14 @@ namespace xyLOGIX.Api.Data.Repositories
             }
             catch (Exception ex)
             {
-                //OnIterationError(
-                //    new IterationErrorEventArgs(
-                //        new IteratorException(
-                //            "A problem was occurred during the iteration operation.",
-                //            ex
-                //        )
-                //    )
-                //);
+                OnIterationError(
+                    new IterationErrorEventArgs(
+                        new IteratorException(
+                            "A problem was occurred during the iteration operation.",
+                            ex
+                        )
+                    )
+                );
 
                 // in the event an exception occurred, just return the empty list
                 result = new List<T>();
