@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using xyLOGIX.Api.Data.Iterators.Events;
 
 namespace xyLOGIX.Api.Data.Repositories.Interfaces
@@ -134,7 +135,7 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// elements at a time (default is 1), and tries to find an element
         /// matching the criteria provided.
         /// </summary>
-        /// <param name="queryExpression">
+        /// <param name="predicate">
         /// (Required.) Lambda expression specifying how to tell if an element
         /// is to be retrieved.
         /// </param>
@@ -142,10 +143,10 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// This method iterates through the dataset of the target REST API,
         /// testing each element against the provided
         /// <paramref
-        ///     name="queryExpression" />
+        ///     name="predicate" />
         /// . The first element for which the
         /// <paramref
-        ///     name="queryExpression" />
+        ///     name="predicate" />
         /// evaluates to <c>true</c> is then returned,
         /// or <c>null</c> if an error occurred or the matching element was
         /// otherwise not found.
@@ -181,16 +182,23 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// <exception cref="T:System.NotSupportedException">
         /// Might be if the target API does not support the concept of pagination.
         /// </exception>
-        T Find(Predicate<T> queryExpression);
+        T Find(Predicate<T> predicate);
 
         /// <summary>
         /// Strives to invoke the appropriate GET method exposed by the target
         /// REST API to simply retrieve the object matching the specified
-        /// <paramref name="queryExpression" /> without pagination or iteration.
+        /// <paramref name="searchParams" /> without pagination or iteration.
         /// </summary>
-        /// <param name="queryExpression">
+        /// <param name="searchParams">
+        /// (Required.) A <see cref="T:System.Dynamic.ExpandoObject" /> whose
+        /// parameters contain search values (or <c>null</c> s, if allowed by
+        /// various REST APIs) to be fed to the target REST API method that
+        /// retrieves the desired element of the dataset exposed by the API.
         /// </param>
         /// <returns>
+        /// Reference to an instance of an object of type
+        /// <typeparam name="T" />
+        /// that contains the data from the found element or <c>null</c> if not found.
         /// </returns>
         /// <remarks>
         /// If a target REST API supports it, clients of this repository may
@@ -213,7 +221,18 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// searching for objects since not all REST API controllers expose the
         /// same functionality set or have the same rate-limit concerns.
         /// </remarks>
-        T Get(Predicate<T> queryExpression);
+        /// <exception cref="T:System.Exception">
+        /// Bubbled up from whichever method call is made on the library that
+        /// accesses the target REST API in the event the operation was not successful.
+        /// </exception>
+        /// <exception cref="T:ArgumentNullException">
+        /// Thrown if the required parameter, <paramref name="searchParams" />
+        /// , is set to a <c>null</c> reference.
+        /// </exception>
+        /// <exception cref="T:System.NotSupportedException">
+        /// Might be if the target API does not support the concept of pagination.
+        /// </exception>
+        T Get(ExpandoObject searchParams);
 
         /// <summary>
         /// Obtains the gamut of elements in the target REST API dataset, using

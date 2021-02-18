@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using xyLOGIX.Api.Data.Iterables.Interfaces;
 using xyLOGIX.Api.Data.Iterators.Events;
 using xyLOGIX.Api.Data.Iterators.Exceptions;
@@ -181,7 +182,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// elements at a time (default is 1), and tries to find an element
         /// matching the criteria provided.
         /// </summary>
-        /// <param name="queryExpression">
+        /// <param name="predicate">
         /// (Required.) Lambda expression specifying how to tell if an element
         /// is to be retrieved.
         /// </param>
@@ -189,14 +190,21 @@ namespace xyLOGIX.Api.Data.Repositories
         /// This method iterates through the dataset of the target REST API,
         /// testing each element against the provided
         /// <paramref
-        ///     name="queryExpression" />
+        ///     name="predicate" />
         /// . The first element for which the
         /// <paramref
-        ///     name="queryExpression" />
-        /// evaluates to <c>true</c> is then returned,
-        /// or <c>null</c> if an error occurred or the matching element was
+        ///     name="predicate" />
+        /// evaluates to <c>true</c> is then returned, or
+        /// <c>null</c> if an error occurred or the matching element was
         /// otherwise not found.
         /// </returns>
+        /// Reference to an instance of an object of type
+        /// <typeparamref name="T" />
+        /// if an object matching the criteria is found;
+        /// <c>
+        /// null
+        /// </c>
+        /// otherwise.
         /// <remarks>
         /// Clients of this repository should use this method instead of
         /// invoking the GetAll operation and then filtering with the LINQ Where
@@ -220,24 +228,111 @@ namespace xyLOGIX.Api.Data.Repositories
         /// This repository provides these two seemingly redundant ways of
         /// searching for objects since not all REST API controllers expose the
         /// same functionality set or have the same rate-limit concerns.
+        /// <para />
+        /// <strong>EXTREME CAUTION</strong> IF rate-limiting and data set size
+        /// are concerns, then it is probably better to call the
+        /// <see
+        ///     cref="M:xyLOGIX.Api.Data.Repositories.Interfaces.IApiRepository.Get" />
+        /// method. This passes the search criteria directly to the target REST
+        /// API's server and harnesses the server's own power to perform the
+        /// search for the desired item, instead of going through the entire
+        /// data set, one by one, until a match is found.
         /// </remarks>
         /// <exception cref="T:System.Exception">
         /// Bubbled up from whichever method call is made on the library that
         /// accesses the target REST API in the event the operation was not successful.
         /// </exception>
+        /// <exception cref="T:ArgumentNullException">
+        /// Thrown if the required parameter, <paramref name="predicate" /> , is
+        /// passed a <c>null</c> value.
+        /// </exception>
         /// <exception cref="T:System.NotSupportedException">
         /// Might be if the target API does not support the concept of pagination.
         /// </exception>
-        public abstract T Find(Predicate<T> queryExpression);
+        public T Find(Predicate<T> predicate)
+        {
+            if (predicate == null) // required value
+                throw new ArgumentNullException(nameof(predicate));
+
+            T result = null;
+
+            var iterator = _iterable.GetIterator();
+
+            if (iterator == null)
+                return result;
+
+            // save a backup of the current page size configured for the
+            // iterator. For this operation only, we will ramp the page size to
+            // 1, so this way we can search for the desired item, one at a time
+            // (with excess results being cached).
+            var priorPageSize = iterator.PageSize;
+
+            if (MaxPageSize >= 1
+            ) // Make sure that 1 is a legal value for the page size.
+                iterator.PageSize = 1;
+
+            try
+            {
+                var current = default(T);
+
+                /*
+                 * NOTE: You may be wondering why we are using a do/while loop here rather than a
+                 * while loop, such as is the case for most examples of using IEnumerator to iterate
+                 * through a collection.  Datasets provided by REST APIs implement greedy cursors.
+                 * This is to say, you call a method to fetch the first page and then get a pagination
+                 * resource over and over again until finally the pagination resource has a null for the
+                 * next item.  Meaning, REST API data sets are treated very much in the same way as
+                 * C linked lists.  it's impossible to first test 'has next' and then 'move next' -- you
+                 * have to do the opposite -- get the first page with the method call that does this,
+                 * and then retrieve each subsequent pagination resource until the pagination resource
+                 * reports that there is no next page.
+                 */
+
+                do
+                {
+                    current = iterator.Current;
+                    if (current == null || !predicate(current))
+                        continue;
+                    result = current;
+                    break;
+                } while (current != null && iterator.MoveNext());
+            }
+            catch (Exception ex)
+            {
+                OnIterationError(
+                    new IterationErrorEventArgs(
+                        new IteratorException(
+                            "A problem was occurred during the iteration operation.",
+                            ex
+                        )
+                    )
+                );
+
+                // in the event an exception occurred, just return the empty list
+                result = default;
+            }
+
+            // restore the prior value for the iterator object's page size.
+            iterator.PageSize = priorPageSize;
+
+            return result;
+        }
 
         /// <summary>
         /// Strives to invoke the appropriate GET method exposed by the target
         /// REST API to simply retrieve the object matching the specified
-        /// <paramref name="queryExpression" /> without pagination or iteration.
+        /// <paramref name="searchParams" /> without pagination or iteration.
         /// </summary>
-        /// <param name="queryExpression">
+        /// <param name="searchParams">
+        /// (Required.) A <see cref="T:System.Dynamic.ExpandoObject" /> whose
+        /// parameters contain search values (or <c>null</c> s, if allowed by
+        /// various REST APIs) to be fed to the target REST API method that
+        /// retrieves the desired element of the dataset exposed by the API.
         /// </param>
         /// <returns>
+        /// Reference to an instance of an object of type
+        /// <typeparam name="T" />
+        /// that contains the data from the found element or <c>null</c> if not found.
         /// </returns>
         /// <remarks>
         /// If a target REST API supports it, clients of this repository may
@@ -260,7 +355,18 @@ namespace xyLOGIX.Api.Data.Repositories
         /// searching for objects since not all REST API controllers expose the
         /// same functionality set or have the same rate-limit concerns.
         /// </remarks>
-        public abstract T Get(Predicate<T> queryExpression);
+        /// <exception cref="T:System.Exception">
+        /// Bubbled up from whichever method call is made on the library that
+        /// accesses the target REST API in the event the operation was not successful.
+        /// </exception>
+        /// <exception cref="T:ArgumentNullException">
+        /// Thrown if the required parameter, <paramref name="searchParams" /> ,
+        /// is set to a <c>null</c> reference.
+        /// </exception>
+        /// <exception cref="T:System.NotSupportedException">
+        /// Might be if the target API does not support the concept of pagination.
+        /// </exception>
+        public abstract T Get(ExpandoObject searchParams);
 
         /// <summary>
         /// Obtains the gamut of elements in the target REST API dataset, using
@@ -283,7 +389,9 @@ namespace xyLOGIX.Api.Data.Repositories
         /// in the event that the target REST API does not support retrieving
         /// its entire available value set of elements.
         /// <para />
-        /// This method is all-or-nothing.
+        /// <strong>EXTREME CAUTION</strong> This method is all-or-nothing. If
+        /// the dataset is large, or infinite, then this method will have severe
+        /// performance issues.
         /// </remarks>
         /// <exception cref="T:System.Exception">
         /// Bubbled up from whichever method call is made on the library that
@@ -303,11 +411,10 @@ namespace xyLOGIX.Api.Data.Repositories
             if (iterator == null)
                 return result;
 
-            // save a backup of the current page size configured for
-            // the iterator.  For this operation only, we will ramp the
-            // page size to the maximum, in an effort to minimize the
-            // number of calls to the API, in order to limit the amount
-            // of requests.
+            // save a backup of the current page size configured for the
+            // iterator. For this operation only, we will ramp the page size to
+            // the maximum, in an effort to minimize the number of calls to the
+            // API, in order to limit the amount of requests.
             var priorPageSize = iterator.PageSize;
 
             if (MaxPageSize >= 1)
@@ -317,12 +424,25 @@ namespace xyLOGIX.Api.Data.Repositories
             {
                 var current = default(T);
 
+                /*
+                 * NOTE: You may be wondering why we are using a do/while loop here rather than a
+                 * while loop, such as is the case for most examples of using IEnumerator to iterate
+                 * through a collection.  Datasets provided by REST APIs implement greedy cursors.
+                 * This is to say, you call a method to fetch the first page and then get a pagination
+                 * resource over and over again until finally the pagination resource has a null for the
+                 * next item.  Meaning, REST API data sets are treated very much in the same way as
+                 * C linked lists.  it's impossible to first test 'has next' and then 'move next' -- you
+                 * have to do the opposite -- get the first page with the method call that does this,
+                 * and then retrieve each subsequent pagination resource until the pagination resource
+                 * reports that there is no next page.
+                 */
+
                 do
                 {
-                    current = iterator.GetNext();
+                    current = iterator.Current;
                     if (current == null) break;
                     result.Add(current);
-                } while (current != null && iterator.HasNext());
+                } while (current != null && iterator.MoveNext());
             }
             catch (Exception ex)
             {
