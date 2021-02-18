@@ -51,11 +51,26 @@ namespace xyLOGIX.Api.Data.Repositories
         /// the API will fetch in a single method call. This varies depending on
         /// the particular REST API in use, therefore this is a constructor parameter.
         /// </param>
+        /// <exception cref="T:ArgumentNullException">
+        /// Thrown if the required parameter, <paramref name="iterable" />, is
+        /// passed a <c>null</c> value.
+        /// </exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">
+        /// Thrown if the <paramref name="pageSize" /> parameter is zero or
+        /// negative, or if the <paramref name="maxPageSize" /> is less than 1.
+        /// </exception>
         protected ApiRepositoryBase(IIterable<T> iterable, int pageSize = 1,
             int maxPageSize = 100)
         {
             if (pageSize <= 0)
-                throw new ArgumentOutOfRangeException(nameof(pageSize));
+                throw new ArgumentOutOfRangeException(
+                    nameof(pageSize), "The page size must be greater than zero."
+                );
+            if (maxPageSize < 1)
+                throw new ArgumentOutOfRangeException(
+                    nameof(maxPageSize),
+                    "The maximum page size must be 1 or greater."
+                );
             _iterable = iterable ??
                         throw new ArgumentNullException(nameof(iterable));
             PageSize = pageSize;
