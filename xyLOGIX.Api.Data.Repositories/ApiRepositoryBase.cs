@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using xyLOGIX.Api.Data.Iterables.Interfaces;
-using xyLOGIX.Api.Data.Iterators.Events;
 using xyLOGIX.Api.Data.Iterators.Exceptions;
 using xyLOGIX.Api.Data.Repositories.Events;
 using xyLOGIX.Api.Data.Repositories.Interfaces;
@@ -16,8 +14,8 @@ namespace xyLOGIX.Api.Data.Repositories
     /// Name -- should be that of a concrete type -- of the type of a POCO that
     /// specifies a single element of the collection exposed by this repository.
     /// <para />
-    /// An interface name may be used; however, implementers must then adapt their
-    /// methods' outputs to the interface specified, in this case.
+    /// An interface name may be used; however, implementers must then adapt
+    /// their methods' outputs to the interface specified, in this case.
     /// <para />
     /// Implementers and clients are cautioned that if this type parameter is
     /// supplied with an interface, further generic abstraction may be required
@@ -40,7 +38,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// DbContext field we utilize in a Repository class that is used in
         /// Entity Framework.
         /// </summary>
-        private readonly IIterable<T> _iterable;
+        private IIterable<T> _iterable;
 
         /// <summary>
         /// Constructs a new instance of
@@ -68,8 +66,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// Thrown if the <paramref name="pageSize" /> parameter is zero or
         /// negative, or if the <paramref name="maxPageSize" /> is less than 1.
         /// </exception>
-        protected ApiRepositoryBase(IIterable<T> iterable, int pageSize = 1,
-            int maxPageSize = 100)
+        protected ApiRepositoryBase(int pageSize = 1, int maxPageSize = 100)
         {
             if (pageSize <= 0)
                 throw new ArgumentOutOfRangeException(
@@ -80,8 +77,7 @@ namespace xyLOGIX.Api.Data.Repositories
                     nameof(maxPageSize),
                     "The maximum page size must be 1 or greater."
                 );
-            _iterable = iterable ??
-                        throw new ArgumentNullException(nameof(iterable));
+
             PageSize = pageSize;
         }
 
@@ -374,7 +370,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// <exception cref="T:System.NotSupportedException">
         /// Might be if the target API does not support the concept of pagination.
         /// </exception>
-        public abstract T Get(ExpandoObject searchParams);
+        public abstract T Get(dynamic searchParams);
 
         /// <summary>
         /// Obtains the gamut of elements in the target REST API dataset, using
@@ -503,6 +499,24 @@ namespace xyLOGIX.Api.Data.Repositories
         /// functionality.
         /// </exception>
         public abstract void Update(T recordToUpdate);
+
+        /// <summary>
+        /// Associates this repository with a data source.
+        /// </summary>
+        /// <param name="iterable">
+        /// (Required.) Reference to an instance of a class that implements the
+        /// <see cref="T:xyLOGIX.Api.Data.Iterables.Interfaces.IIterable" />
+        /// interface to which to associate this repository.
+        /// </param>
+        /// <returns>
+        /// </returns>
+        public IApiRepository<T> Attach(IIterable<T> iterable)
+        {
+            _iterable = iterable ??
+                        throw new ArgumentNullException(nameof(iterable));
+
+            return this;
+        }
 
         /// <summary>
         /// Raises the
