@@ -1,11 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <ApplicationIcon>1382_cogs.ico</ApplicationIcon>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <ProjectGuid>{04B2ADFC-9684-49C6-8D4A-DA28E4873B83}</ProjectGuid>
+    <ProjectGuid>{66439609-A57C-4BDC-A2E3-033CD75B5891}</ProjectGuid>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -58,19 +60,16 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyName>xyLOGIX.Api.Data.Repositories</AssemblyName>
+    <AssemblyName>xyLOGIX.Api.Data.Repositories.Tests</AssemblyName>
   </PropertyGroup>
   <PropertyGroup>
-    <RootNamespace>xyLOGIX.Api.Data.Repositories</RootNamespace>
+    <RootNamespace>xyLOGIX.Api.Data.Repositories.Tests</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GlobalAspects.cs" />
-    <Compile Include="ApiRepositoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -86,31 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1382_cogs.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\xyLOGIX.Api.Data.Iterables\xyLOGIX.Api.Data.Iterables.Interfaces\xyLOGIX.Api.Data.Iterables.Interfaces.csproj">
-      <Project>{B71D1A36-9468-45A6-8C6D-B60F35BC561A}</Project>
-      <Name>xyLOGIX.Api.Data.Iterables.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\xyLOGIX.Api.Data.Iterators\xyLOGIX.Api.Data.Iterators.Exceptions\xyLOGIX.Api.Data.Iterators.Exceptions.csproj">
-      <Project>{C86E05F7-04BB-4A45-B264-B3BF976D5B04}</Project>
-      <Name>xyLOGIX.Api.Data.Iterators.Exceptions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\xyLOGIX.Api.Data.Iterators\xyLOGIX.Api.Data.Iterators.Interfaces\xyLOGIX.Api.Data.Iterators.Interfaces.csproj">
-      <Project>{6C7EC464-BCD6-43A7-A147-984E404F43FD}</Project>
-      <Name>xyLOGIX.Api.Data.Iterators.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\xyLOGIX.Api.Data.Repositories.Events\xyLOGIX.Api.Data.Repositories.Events.csproj">
-      <Project>{62A5D5AD-D1EB-4D6D-8BA0-45236693D3ED}</Project>
-      <Name>xyLOGIX.Api.Data.Repositories.Events</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\xyLOGIX.Api.Data.Repositories.Interfaces\xyLOGIX.Api.Data.Repositories.Interfaces.csproj">
-      <Project>{ED776EAD-7091-452A-8E64-07CBA0C2396A}</Project>
-      <Name>xyLOGIX.Api.Data.Repositories.Interfaces</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
