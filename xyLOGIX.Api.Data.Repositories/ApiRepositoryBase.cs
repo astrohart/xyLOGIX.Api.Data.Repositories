@@ -22,6 +22,12 @@ namespace xyLOGIX.Api.Data.Repositories
     /// in other areas of the software system.
     /// </typeparam>
     /// <remarks>
+    /// This class provides access to a paginated/iterated REST API data set, of
+    /// an a priori unknown length, as if it were, e.g., a SQL Server data
+    /// source. Basically, we try to merge the concepts of data retrieval from a
+    /// REST API data set and the concepts of the, e.g., Repository pattern in
+    /// the N-Tier data access world.
+    /// <para />
     /// Implementers are free to deny access to specific functionality by
     /// throwing <see cref="T:System.NotSupportedException" /> for any of the
     /// methods this interface exposes, given varying target REST API use-case
@@ -110,6 +116,24 @@ namespace xyLOGIX.Api.Data.Repositories
         /// from 1 by setting this property.
         /// </remarks>
         public abstract int PageSize { get; set; }
+
+        /// <summary>
+        /// Associates this repository with a data source.
+        /// </summary>
+        /// <param name="iterable">
+        /// (Required.) Reference to an instance of a class that implements the
+        /// <see cref="T:xyLOGIX.Api.Data.Iterables.Interfaces.IIterable" />
+        /// interface to which to associate this repository.
+        /// </param>
+        /// <returns>
+        /// </returns>
+        public IApiRepository<T> Attach(IIterable<T> iterable)
+        {
+            _iterable = iterable ??
+                        throw new ArgumentNullException(nameof(iterable));
+
+            return this;
+        }
 
         /// <summary>
         /// If offered by the endpoint, uses any DELETE request exposed to
@@ -271,8 +295,8 @@ namespace xyLOGIX.Api.Data.Repositories
             // (with excess results being cached).
             var priorPageSize = iterator.PageSize;
 
-            if (MaxPageSize >= 1
-            ) // Make sure that 1 is a legal value for the page size.
+            if (MaxPageSize >=
+                1) // Make sure that 1 is a legal value for the page size.
                 iterator.PageSize = 1;
 
             try
@@ -499,24 +523,6 @@ namespace xyLOGIX.Api.Data.Repositories
         /// functionality.
         /// </exception>
         public abstract void Update(T recordToUpdate);
-
-        /// <summary>
-        /// Associates this repository with a data source.
-        /// </summary>
-        /// <param name="iterable">
-        /// (Required.) Reference to an instance of a class that implements the
-        /// <see cref="T:xyLOGIX.Api.Data.Iterables.Interfaces.IIterable" />
-        /// interface to which to associate this repository.
-        /// </param>
-        /// <returns>
-        /// </returns>
-        public IApiRepository<T> Attach(IIterable<T> iterable)
-        {
-            _iterable = iterable ??
-                        throw new ArgumentNullException(nameof(iterable));
-
-            return this;
-        }
 
         /// <summary>
         /// Raises the
