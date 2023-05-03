@@ -490,7 +490,7 @@ namespace xyLOGIX.Api.Data.Repositories
             // restore the prior value for the iterator object's page size.
             iterator.PageSize = priorPageSize;
 
-            return (IIterable<T>) result;
+            return result;
         }
 
         /// <summary>
