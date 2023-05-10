@@ -51,7 +51,7 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// </summary>
         /// <remarks>
         /// The Find, Delete, DeleteAll, and Update methods, by default, iterate
-        /// through the target REST API's data set a single element at a time.
+        /// through the target REST API data set a single element at a time.
         /// <para/>
         /// Because we have to be careful about not hitting rate limits during
         /// these operations, this property allows clients of this class to
@@ -74,7 +74,7 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
 
         /// <summary>
         /// If offered by the endpoint, uses any DELETE request exposed to
-        /// remove something from the target REST API's dataset.
+        /// remove something from the target REST API dataset.
         /// </summary>
         /// <typeparam name="T">
         /// Type of the object that represents a single element in the target
@@ -83,7 +83,7 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// <param name="recordToDelete">
         /// (Required.) Reference to an instance of the model type,
         /// <typeparamref name="T"/> , that specifies which object should be
-        /// deleted from the API's dataset.
+        /// deleted from the API dataset.
         /// </param>
         /// <remarks>
         /// Not all REST APIs expose a means of deleting items from their
@@ -119,7 +119,7 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// If the predicate returns <c>true</c> for a given instance of the
         /// element model object, then this object strives to remove that
         /// element from the dataset using the appropriate method call on the
-        /// target REST API's client library.
+        /// target REST API client library.
         /// </param>
         /// <remarks>
         /// Not all REST APIs expose a means of deleting items from their
