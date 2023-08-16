@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using xyLOGIX.Api.Data.Iterables.Interfaces;
 using xyLOGIX.Api.Data.Repositories.Events;

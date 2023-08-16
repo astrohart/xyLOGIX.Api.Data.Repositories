@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("xyLOGIX Support Library for xyLOGIX.Api.Data.Repositories.Events")]
 [assembly:
     AssemblyCopyright(
-        "Copyright © 2020 by xyLOGIX, LLC.  All rights reserved.")]
+        "Copyright ? 2020 by xyLOGIX, LLC.  All rights reserved.")]
 [assembly:
     AssemblyTrademark(
         "This software is a component of xyLOGIX xyLOGIX.Api.Data.Repositories.  xyLOGIX.Api.Data.Repositories is a trademark of xyLOGIX, LLC.  All rights reserved, especially those granted by international treaties.")]
