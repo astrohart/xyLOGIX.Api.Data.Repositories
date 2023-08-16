@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using xyLOGIX.Api.Data.Iterators.Exceptions;
 
 namespace xyLOGIX.Api.Data.Repositories.Events

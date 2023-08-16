@@ -1,4 +1,4 @@
-# xyLOGIX.Api.Data.Repositories `class library`
+﻿# xyLOGIX.Api.Data.Repositories `class library`
 
 This class library project serves the following purposes:
 
