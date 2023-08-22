@@ -70,7 +70,7 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// </param>
         /// <returns>
         /// </returns>
-        IApiRepository<T> Attach(IIterable<T> iterable);
+        IApiRepository<T> AttachDataSource(IIterable<T> iterable);
 
         /// <summary>
         /// If offered by the endpoint, uses any DELETE request exposed to

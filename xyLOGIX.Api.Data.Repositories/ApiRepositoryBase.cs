@@ -128,7 +128,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// </param>
         /// <returns>
         /// </returns>
-        public IApiRepository<T> Attach(IIterable<T> iterable)
+        public IApiRepository<T> AttachDataSource(IIterable<T> iterable)
         {
             _iterable = iterable ??
                         throw new ArgumentNullException(nameof(iterable));
@@ -436,7 +436,6 @@ namespace xyLOGIX.Api.Data.Repositories
             var result = new List<T>();
 
             var iterator = _iterable.GetIterator();
-
             if (iterator == null)
                 return result;
 
