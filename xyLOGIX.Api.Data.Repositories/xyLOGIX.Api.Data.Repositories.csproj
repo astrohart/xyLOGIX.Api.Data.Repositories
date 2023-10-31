@@ -89,6 +89,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +123,10 @@
     <ProjectReference Include="..\..\xyLOGIX.Api.Data.Iterators\xyLOGIX.Api.Data.Iterators.Interfaces\xyLOGIX.Api.Data.Iterators.Interfaces.csproj">
       <Project>{6C7EC464-BCD6-43A7-A147-984E404F43FD}</Project>
       <Name>xyLOGIX.Api.Data.Iterators.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\xyLOGIX.Collections.Synchronized.VS2019\xyLOGIX.Collections.Synchronized\xyLOGIX.Collections.Synchronized.csproj">
+      <Project>{33FD8195-DDE4-4245-9EDA-35836CAA40C5}</Project>
+      <Name>xyLOGIX.Collections.Synchronized</Name>
     </ProjectReference>
     <ProjectReference Include="..\xyLOGIX.Api.Data.Repositories.Events\xyLOGIX.Api.Data.Repositories.Events.csproj">
       <Project>{62A5D5AD-D1EB-4D6D-8BA0-45236693D3ED}</Project>
