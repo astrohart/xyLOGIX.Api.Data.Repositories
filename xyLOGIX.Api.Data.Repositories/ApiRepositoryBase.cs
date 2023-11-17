@@ -1,10 +1,11 @@
-﻿using System;
+﻿using PostSharp.Patterns.Collections;
+using PostSharp.Patterns.Threading;
+using System;
 using System.Collections.Generic;
 using xyLOGIX.Api.Data.Iterables.Interfaces;
 using xyLOGIX.Api.Data.Iterators.Exceptions;
 using xyLOGIX.Api.Data.Repositories.Events;
 using xyLOGIX.Api.Data.Repositories.Interfaces;
-using xyLOGIX.Collections.Synchronized;
 
 namespace xyLOGIX.Api.Data.Repositories
 {
@@ -420,7 +421,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// </exception>
         public virtual IEnumerable<T> GetAll()
         {
-            IList<T> result = new ConcurrentList<T>();
+            IList<T> result = new AdvisableCollection<T>();
 
             var iterator = _iterable.GetIterator();
             if (iterator == null)
@@ -471,7 +472,7 @@ namespace xyLOGIX.Api.Data.Repositories
                 );
 
                 // in the event an exception occurred, just return the empty list
-                result = new ConcurrentList<T>();
+                result = new AdvisableCollection<T>();
             }
 
             // restore the prior value for the iterator object's page size.
@@ -520,6 +521,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// <see cref="T:xyLOGIX.Api.Data.Iterators.Events.IterationErrorEventArgs" /> that
         /// contains the event data.
         /// </param>
+        [Yielder]
         protected virtual void OnIterationError(IterationErrorEventArgs e)
             => IterationError?.Invoke(this, e);
     }
