@@ -29,7 +29,7 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
     /// this interface exposes, given varying target REST API use-case and support
     /// scenarios.
     /// </remarks>
-    [Actor]
+    [Synchronized]
     public interface IApiRepository<T> where T : class
     {
         /// <summary>
