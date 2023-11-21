@@ -1,4 +1,6 @@
 ﻿using PostSharp.Patterns.Collections;
+using PostSharp.Patterns.Diagnostics;
+using PostSharp.Patterns.Model;
 using PostSharp.Patterns.Threading;
 using System;
 using System.Collections.Generic;
@@ -46,49 +48,30 @@ namespace xyLOGIX.Api.Data.Repositories
         /// This objects provides us with data. It's kind of like the DbContext field we
         /// utilize in a Repository class that is used in Entity Framework.
         /// </summary>
-        private IIterable<T> _iterable;
+        [Reference] private IIterable<T> _iterable;
 
         /// <summary>
-        /// Constructs a new instance of
-        /// <see cref="T:xyLOGIX.Api.Data.Repositories.Interfaces.ApiRepositoryBase" /> and
-        /// returns a reference to it.
+        /// Initializes static data or performs actions that need to be performed once only
+        /// for the <see cref="T:xyLOGIX.Api.Data.Repositories.ApiRepositoryBase" /> class.
         /// </summary>
-        /// <param name="pageSize">
-        /// (Optional.) Integer value specifying the number of
-        /// elements to obtain at a time while iterating over the collection supplied by
-        /// the target REST API.
-        /// <para />
-        /// The default value of this parameter is one.
-        /// </param>
-        /// <param name="maxPageSize">
-        /// (Required.) Integer value specifying the maximum
-        /// number of entries the API will fetch in a single method call. This varies
-        /// depending on the particular REST API in use, therefore this is a constructor
-        /// parameter.
-        /// </param>
-        /// <exception cref="T:System.ArgumentNullException">
-        /// Thrown if the required
-        /// parameter, <paramref name="iterable" />, is passed a <c>null</c> value.
-        /// </exception>
-        /// <exception cref="T:System.ArgumentOutOfRangeException">
-        /// Thrown if the
-        /// <paramref name="pageSize" /> parameter is zero or negative, or if the
-        /// <paramref name="maxPageSize" /> is less than 1.
-        /// </exception>
-        protected ApiRepositoryBase(int pageSize = 1, int maxPageSize = 100)
-        {
-            if (pageSize <= 0)
-                throw new ArgumentOutOfRangeException(
-                    nameof(pageSize), "The page size must be greater than zero."
-                );
-            if (maxPageSize < 1)
-                throw new ArgumentOutOfRangeException(
-                    nameof(maxPageSize),
-                    "The maximum page size must be 1 or greater."
-                );
+        /// <remarks>
+        /// This constructor is called automatically prior to the first instance being
+        /// created or before any static members are referenced.
+        /// </remarks>
+        [Log(AttributeExclude = true)]
+        static ApiRepositoryBase() { }
 
-            PageSize = pageSize;
-        }
+        /// <summary>
+        /// Initializes a new instance of
+        /// <see cref="T:xyLOGIX.Api.Data.Repositories.ApiRepositoryBase" /> and returns a
+        /// reference to it.
+        /// </summary>
+        /// <remarks>
+        /// <strong>NOTE:</strong> This constructor is marked <see langword="protected" />
+        /// due to the fact that this class is marked <see langword="abstract" />.
+        /// </remarks>
+        [Log(AttributeExclude = true)]
+        protected ApiRepositoryBase() { }
 
         /// <summary>
         /// Gets or sets the maximum number of elements per page that the API
