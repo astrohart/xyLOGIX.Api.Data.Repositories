@@ -1,4 +1,4 @@
-﻿using PostSharp.Patterns.Collections;
+using PostSharp.Patterns.Collections;
 using PostSharp.Patterns.Diagnostics;
 using PostSharp.Patterns.Model;
 using PostSharp.Patterns.Threading;
@@ -98,6 +98,7 @@ namespace xyLOGIX.Api.Data.Repositories
         public abstract int PageSize { get; set; }
 
         /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
+        [WeakEvent]
         public event IterationErrorEventHandler IterationError;
 
         /// <summary> Associates this repository with a data source. </summary>
