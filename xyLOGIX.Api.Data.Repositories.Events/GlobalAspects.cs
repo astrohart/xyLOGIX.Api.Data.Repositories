@@ -1,12 +1,10 @@
 using PostSharp.Extensibility;
 using PostSharp.Patterns.Diagnostics;
-using PostSharp.Patterns.Model;
 
 // This file contains registration of aspects that are applied to several classes of this project.
-[assembly: WeakEvent(AttributePriority = 1)]
 [assembly:
     Log(
-        AttributePriority = 2,
+        AttributePriority = 1,
         AttributeTargetTypeAttributes = MulticastAttributes.Private |
                                         MulticastAttributes.Protected |
                                         MulticastAttributes.Internal |
@@ -20,5 +18,5 @@ using PostSharp.Patterns.Model;
 [assembly:
     Log(
         AttributeExclude = true, AttributeTargetMembers = "regex:^get_|^set_|^add_|^remove_",
-        AttributePriority = 3
+        AttributePriority = 2
     )]
