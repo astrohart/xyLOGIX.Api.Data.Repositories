@@ -1,5 +1,6 @@
 using PostSharp.Patterns.Collections;
 using PostSharp.Patterns.Diagnostics;
+using PostSharp.Patterns.Model;
 using PostSharp.Patterns.Threading;
 using System;
 using System.Collections.Generic;
@@ -70,7 +71,11 @@ namespace xyLOGIX.Api.Data.Repositories
         /// due to the fact that this class is marked <see langword="abstract" />.
         /// </remarks>
         [Log(AttributeExclude = true)]
-        protected ApiRepositoryBase() { }
+        protected ApiRepositoryBase()
+        { }
+
+        /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
+        public event IterationErrorEventHandler IterationError;
 
         /// <summary>
         /// Gets or sets the maximum number of elements per page that the API
@@ -95,9 +100,6 @@ namespace xyLOGIX.Api.Data.Repositories
         /// of elements taken at a time to be different from 1 by setting this property.
         /// </remarks>
         public abstract int PageSize { get; set; }
-
-        /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
-        public event IterationErrorEventHandler IterationError;
 
         /// <summary> Associates this repository with a data source. </summary>
         /// <param name="iterable">
