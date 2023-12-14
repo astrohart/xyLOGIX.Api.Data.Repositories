@@ -1,5 +1,5 @@
-using PostSharp.Patterns.Threading;
 using PostSharp.Patterns.Diagnostics;
+using PostSharp.Patterns.Threading;
 using System;
 using xyLOGIX.Api.Data.Iterators.Exceptions;
 
@@ -9,7 +9,7 @@ namespace xyLOGIX.Api.Data.Repositories.Events
     /// Defines the data that is passed by all events of type
     /// <see cref="T:xyLOGIX.Api.Data.Iterators.Events.IterationErrorEventHandler" />.
     /// </summary>
-[ExplicitlySynchronized]
+    [ExplicitlySynchronized]
     public class IterationErrorEventArgs : EventArgs
     {
         /// <summary>
