@@ -70,12 +70,6 @@
   <PropertyGroup>
     <RootNamespace>xyLOGIX.Api.Data.Repositories.Events</RootNamespace>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
@@ -107,7 +101,6 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="key.snk" />
     <Compile Include="GlobalAspects.cs" />
     <Compile Include="IterationErrorEventArgs.cs" />
     <Compile Include="IterationErrorEventHandler.cs" />
