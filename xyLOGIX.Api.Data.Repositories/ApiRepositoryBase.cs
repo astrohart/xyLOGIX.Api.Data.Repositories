@@ -39,8 +39,7 @@ namespace xyLOGIX.Api.Data.Repositories
     /// interface exposes, given varying target REST API use-case and support
     /// scenarios.
     /// </remarks>
-    public abstract class ApiRepositoryBase<T> : IApiRepository<T>
-        where T : class
+    public abstract class ApiRepositoryBase<T> : IApiRepository<T> where T : class
     {
         /// <summary>
         /// Reference to an instance of an object that implements the
@@ -71,11 +70,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// due to the fact that this class is marked <see langword="abstract" />.
         /// </remarks>
         [Log(AttributeExclude = true)]
-        protected ApiRepositoryBase()
-        { }
-
-        /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
-        public event IterationErrorEventHandler IterationError;
+        protected ApiRepositoryBase() { }
 
         /// <summary>
         /// Gets or sets the maximum number of elements per page that the API
@@ -100,6 +95,9 @@ namespace xyLOGIX.Api.Data.Repositories
         /// of elements taken at a time to be different from 1 by setting this property.
         /// </remarks>
         public abstract int PageSize { get; set; }
+
+        /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
+        public event IterationErrorEventHandler IterationError;
 
         /// <summary> Associates this repository with a data source. </summary>
         /// <param name="iterable">
@@ -258,64 +256,65 @@ namespace xyLOGIX.Api.Data.Repositories
 
             T result = null;
 
-            var iterator = _iterable.GetIterator();
-
-            if (iterator == null)
-                return result;
-
-            // save a backup of the current page size configured for the
-            // iterator. For this operation only, we will ramp the page size to
-            // 1, so this way we can search for the desired item, one at a time
-            // (with excess results being cached).
-            var priorPageSize = iterator.PageSize;
-
-            if (MaxPageSize >=
-                1) // Make sure that 1 is a legal value for the page size.
-                iterator.PageSize = 1;
-
-            try
+            using (var iterator = _iterable.GetIterator())
             {
-                var current = default(T);
+                if (iterator == null)
+                    return result;
 
-                /*
-                 * NOTE: You may be wondering why we are using a do/while loop here rather than a
-                 * while loop, such as is the case for most examples of using IEnumerator to iterate
-                 * through a collection.  Datasets provided by REST APIs implement greedy cursors.
-                 * This is to say, you call a method to fetch the first page and then get a pagination
-                 * resource over and over again until finally the pagination resource has a null for the
-                 * next item.  Meaning, REST API data sets are treated very much in the same way as
-                 * C linked lists.  it's impossible to first test 'has next' and then 'move next' -- you
-                 * have to do the opposite -- get the first page with the method call that does this,
-                 * and then retrieve each subsequent pagination resource until the pagination resource
-                 * reports that there is no next page.
-                 */
+                // save a backup of the current page size configured for the
+                // iterator. For this operation only, we will ramp the page size to
+                // 1, so this way we can search for the desired item, one at a time
+                // (with excess results being cached).
+                var priorPageSize = iterator.PageSize;
 
-                do
+                if (MaxPageSize >=
+                    1) // Make sure that 1 is a legal value for the page size.
+                    iterator.PageSize = 1;
+
+                try
                 {
-                    current = iterator.Current;
-                    if (current == null || !predicate(current))
-                        continue;
-                    result = current;
-                    break;
-                } while (current != null && iterator.MoveNext());
-            }
-            catch (Exception ex)
-            {
-                OnIterationError(
-                    new IterationErrorEventArgs(
-                        new IteratorException(
-                            "A problem was occurred during the iteration operation.",
-                            ex
+                    var current = default(T);
+
+                    /*
+                     * NOTE: You may be wondering why we are using a do/while loop here rather than a
+                     * while loop, such as is the case for most examples of using IEnumerator to iterate
+                     * through a collection.  Datasets provided by REST APIs implement greedy cursors.
+                     * This is to say, you call a method to fetch the first page and then get a pagination
+                     * resource over and over again until finally the pagination resource has a null for the
+                     * next item.  Meaning, REST API data sets are treated very much in the same way as
+                     * C linked lists.  it's impossible to first test 'has next' and then 'move next' -- you
+                     * have to do the opposite -- get the first page with the method call that does this,
+                     * and then retrieve each subsequent pagination resource until the pagination resource
+                     * reports that there is no next page.
+                     */
+
+                    do
+                    {
+                        current = iterator.Current;
+                        if (current == null || !predicate(current))
+                            continue;
+                        result = current;
+                        break;
+                    } while (current != null && iterator.MoveNext());
+                }
+                catch (Exception ex)
+                {
+                    OnIterationError(
+                        new IterationErrorEventArgs(
+                            new IteratorException(
+                                "A problem was occurred during the iteration operation.",
+                                ex
+                            )
                         )
-                    )
-                );
+                    );
 
-                // in the event an exception occurred, just return the empty list
-                result = default;
+                    // in the event an exception occurred, just return the empty list
+                    result = default;
+                }
+
+                // restore the prior value for the iterator object's page size.
+                iterator.PageSize = priorPageSize;
             }
-
-            // restore the prior value for the iterator object's page size.
-            iterator.PageSize = priorPageSize;
 
             return result;
         }
