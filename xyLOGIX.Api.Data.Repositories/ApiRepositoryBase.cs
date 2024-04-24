@@ -29,7 +29,7 @@ namespace xyLOGIX.Api.Data.Repositories
     /// </typeparam>
     /// <remarks>
     /// This class provides access to a paginated/iterated REST API data set,
-    /// of an a priori unknown length, as if it were, e.g., a SQL Server data source.
+    /// of an a priori unknown length, as if it were, e.g., a SQL Server data quote.
     /// Basically, we try to merge the concepts of data retrieval from a REST API data
     /// set and the concepts of the, e.g., Repository pattern in the N-Tier data access
     /// world.
@@ -99,7 +99,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
         public event IterationErrorEventHandler IterationError;
 
-        /// <summary> Associates this repository with a data source. </summary>
+        /// <summary> Associates this repository with a data quote. </summary>
         /// <param name="iterable">
         /// (Required.) Reference to an instance of a class that
         /// implements the <see cref="T:xyLOGIX.Api.Data.Iterables.Interfaces.IIterable" />
