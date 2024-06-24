@@ -59,7 +59,7 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
         event IterationErrorEventHandler IterationError;
 
-        /// <summary> Associates this repository with a data quote. </summary>
+        /// <summary> Associates this repository with a data source. </summary>
         /// <param name="iterable">
         /// (Required.) Reference to an instance of a class that
         /// implements the <see cref="T:xyLOGIX.Api.Data.Iterables.Interfaces.IIterable" />
