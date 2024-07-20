@@ -1,4 +1,4 @@
-﻿using PostSharp.Patterns.Threading;
+using PostSharp.Patterns.Threading;
 using System;
 using System.Collections.Generic;
 using xyLOGIX.Api.Data.Iterables.Interfaces;

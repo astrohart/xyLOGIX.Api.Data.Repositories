@@ -1,4 +1,4 @@
-﻿namespace xyLOGIX.Api.Data.Repositories.Events
+namespace xyLOGIX.Api.Data.Repositories.Events
 {
     /// <summary>
     /// Defines the method signature for the handlers of a
