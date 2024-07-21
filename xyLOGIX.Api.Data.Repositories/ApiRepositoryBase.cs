@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using PostSharp.Patterns.Collections;
 using PostSharp.Patterns.Diagnostics;
 using PostSharp.Patterns.Model;
