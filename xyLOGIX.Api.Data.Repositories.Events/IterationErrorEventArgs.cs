@@ -57,6 +57,6 @@ namespace xyLOGIX.Api.Data.Repositories.Events
         /// <see cref="T:xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException" /> that
         /// contains the error information.
         /// </summary>
-        public IteratorException Exception { get; }
+        public IteratorException Exception { [DebuggerStepThrough] get; }
     }
 }

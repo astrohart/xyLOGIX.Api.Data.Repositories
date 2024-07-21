@@ -94,7 +94,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// operations, this property allows clients of this class to customize the number
         /// of elements taken at a time to be different from 1 by setting this property.
         /// </remarks>
-        public abstract int PageSize { get; set; }
+        public abstract int PageSize { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
 
         /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
         public event IterationErrorEventHandler IterationError;

@@ -40,7 +40,7 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// This quantity is specified by nearly every REST API out there. This
         /// property is set by a required constructor parameter.
         /// </remarks>
-        int MaxPageSize { get; }
+        int MaxPageSize { [DebuggerStepThrough] get; }
 
         /// <summary>
         /// Gets or sets the page size, i.e., how many elements to request at a
@@ -54,7 +54,7 @@ namespace xyLOGIX.Api.Data.Repositories.Interfaces
         /// operations, this property allows clients of this class to customize the number
         /// of elements taken at a time to be different from 1 by setting this property.
         /// </remarks>
-        int PageSize { get; set; }
+        int PageSize { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
 
         /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
         event IterationErrorEventHandler IterationError;
