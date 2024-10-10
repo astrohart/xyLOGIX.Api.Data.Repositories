@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using PostSharp.Patterns.Diagnostics;
 using PostSharp.Patterns.Threading;
 using System;
