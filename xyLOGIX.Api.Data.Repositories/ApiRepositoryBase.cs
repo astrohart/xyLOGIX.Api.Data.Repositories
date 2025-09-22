@@ -81,7 +81,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// This is an abstract property because this quantity is different for
         /// every target REST API.
         /// </remarks>
-        public abstract int MaxPageSize { get; protected set; }
+        public abstract int MaxPageSize { [DebuggerStepThrough] get; [DebuggerStepThrough] protected set; }
 
         /// <summary>
         /// Gets or sets the page size, i.e., how many elements to request at a
@@ -506,7 +506,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// contains the event data.
         /// </param>
         [Yielder]
-        protected virtual void OnIterationError(IterationErrorEventArgs e)
+        protected virtual void OnIterationError(IterationError[NotLogged] EventArgs e)
             => IterationError?.Invoke(this, e);
     }
 }
