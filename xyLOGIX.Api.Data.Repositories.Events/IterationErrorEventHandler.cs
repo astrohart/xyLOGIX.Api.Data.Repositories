@@ -1,4 +1,5 @@
-﻿namespace xyLOGIX.Api.Data.Repositories.Events
+﻿using PostSharp.Patterns.Diagnostics;
+namespace xyLOGIX.Api.Data.Repositories.Events
 {
     /// <summary>
     /// Defines the method signature for the handlers of a
