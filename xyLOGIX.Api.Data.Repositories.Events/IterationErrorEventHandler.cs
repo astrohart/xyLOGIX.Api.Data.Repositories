@@ -14,7 +14,7 @@
     /// contains the event data.
     /// </param>
     public delegate void IterationErrorEventHandler(
-        object sender,
-        IterationErrorEventArgs e
+        [NotLogged] object sender,
+        [NotLogged] IterationErrorEventArgs e
     );
 }
