@@ -506,7 +506,7 @@ namespace xyLOGIX.Api.Data.Repositories
         /// contains the event data.
         /// </param>
         [Yielder]
-        protected virtual void OnIterationError(IterationError[NotLogged] EventArgs e)
+        protected virtual void OnIterationError([NotLogged] IterationErrorEventArgs e)
             => IterationError?.Invoke(this, e);
     }
 }
