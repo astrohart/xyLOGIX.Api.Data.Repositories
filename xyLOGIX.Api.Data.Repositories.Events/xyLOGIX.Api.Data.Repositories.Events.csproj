@@ -3,153 +3,153 @@
   <Import Project="..\packages\PostSharp.2024.1.6\build\PostSharp.props" Condition="Exists('..\packages\PostSharp.2024.1.6\build\PostSharp.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <ApplicationIcon>1382_cogs.ico</ApplicationIcon>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
-    <ProjectGuid>{62A5D5AD-D1EB-4D6D-8BA0-45236693D3ED}</ProjectGuid>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+  <ApplicationIcon>1382_cogs.ico</ApplicationIcon>
+  <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+  <TargetFrameworkProfile />
+  <ProjectGuid>{62A5D5AD-D1EB-4D6D-8BA0-45236693D3ED}</ProjectGuid>
+  <NuGetPackageImportStamp>
+  </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-    <SkipPostSharp>False</SkipPostSharp>
-    <DocumentationFile>bin\x64\Debug\xyLOGIX.Api.Data.Repositories.Events.xml</DocumentationFile>
+  <DebugSymbols>true</DebugSymbols>
+  <OutputPath>bin\x64\Debug\</OutputPath>
+  <DefineConstants>DEBUG;TRACE</DefineConstants>
+  <DebugType>full</DebugType>
+  <PlatformTarget>x64</PlatformTarget>
+  <LangVersion>7.3</LangVersion>
+  <ErrorReport>prompt</ErrorReport>
+  <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  <Prefer32Bit>false</Prefer32Bit>
+  <SkipPostSharp>False</SkipPostSharp>
+  <DocumentationFile>bin\x64\Debug\xyLOGIX.Api.Data.Repositories.Events.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-    <SkipPostSharp>False</SkipPostSharp>
-    <DocumentationFile>bin\x64\Release\xyLOGIX.Api.Data.Repositories.Events.xml</DocumentationFile>
+  <OutputPath>bin\x64\Release\</OutputPath>
+  <DefineConstants>TRACE</DefineConstants>
+  <Optimize>true</Optimize>
+  <DebugType>pdbonly</DebugType>
+  <PlatformTarget>x64</PlatformTarget>
+  <LangVersion>7.3</LangVersion>
+  <ErrorReport>prompt</ErrorReport>
+  <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  <Prefer32Bit>false</Prefer32Bit>
+  <SkipPostSharp>False</SkipPostSharp>
+  <DocumentationFile>bin\x64\Release\xyLOGIX.Api.Data.Repositories.Events.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-    <SkipPostSharp>False</SkipPostSharp>
-    <DocumentationFile>bin\x86\Debug\xyLOGIX.Api.Data.Repositories.Events.xml</DocumentationFile>
+  <DebugSymbols>true</DebugSymbols>
+  <OutputPath>bin\x86\Debug\</OutputPath>
+  <DefineConstants>DEBUG;TRACE</DefineConstants>
+  <DebugType>full</DebugType>
+  <PlatformTarget>x86</PlatformTarget>
+  <LangVersion>7.3</LangVersion>
+  <ErrorReport>prompt</ErrorReport>
+  <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  <Prefer32Bit>false</Prefer32Bit>
+  <SkipPostSharp>False</SkipPostSharp>
+  <DocumentationFile>bin\x86\Debug\xyLOGIX.Api.Data.Repositories.Events.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-    <SkipPostSharp>False</SkipPostSharp>
-    <DocumentationFile>bin\x86\Release\xyLOGIX.Api.Data.Repositories.Events.xml</DocumentationFile>
+  <OutputPath>bin\x86\Release\</OutputPath>
+  <DefineConstants>TRACE</DefineConstants>
+  <Optimize>true</Optimize>
+  <DebugType>pdbonly</DebugType>
+  <PlatformTarget>x86</PlatformTarget>
+  <LangVersion>7.3</LangVersion>
+  <ErrorReport>prompt</ErrorReport>
+  <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  <Prefer32Bit>false</Prefer32Bit>
+  <SkipPostSharp>False</SkipPostSharp>
+  <DocumentationFile>bin\x86\Release\xyLOGIX.Api.Data.Repositories.Events.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <OutputType>Library</OutputType>
+  <OutputType>Library</OutputType>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+  <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyName>xyLOGIX.Api.Data.Repositories.Events</AssemblyName>
+  <AssemblyName>xyLOGIX.Api.Data.Repositories.Events</AssemblyName>
   </PropertyGroup>
   <PropertyGroup>
-    <RootNamespace>xyLOGIX.Api.Data.Repositories.Events</RootNamespace>
+  <RootNamespace>xyLOGIX.Api.Data.Repositories.Events</RootNamespace>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+  <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=3.0.3.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.3.0.3\lib\net462\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp, Version=2024.1.6.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
-      <HintPath>..\packages\PostSharp.Redist.2024.1.6\lib\net45\PostSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Aggregation, Version=2024.1.6.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\packages\PostSharp.Patterns.Aggregation.Redist.2024.1.6\lib\net45\PostSharp.Patterns.Aggregation.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Common, Version=2024.1.6.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\packages\PostSharp.Patterns.Common.Redist.2024.1.6\lib\net47\PostSharp.Patterns.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Diagnostics, Version=2024.1.6.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\packages\PostSharp.Patterns.Diagnostics.Redist.2024.1.6\lib\net47\PostSharp.Patterns.Diagnostics.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Diagnostics.Backends.Log4Net, Version=2024.1.6.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\packages\PostSharp.Patterns.Diagnostics.Log4Net.2024.1.6\lib\net45\PostSharp.Patterns.Diagnostics.Backends.Log4Net.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Model, Version=2024.1.6.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\packages\PostSharp.Patterns.Model.Redist.2024.1.6\lib\net45\PostSharp.Patterns.Model.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Threading, Version=2024.1.6.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\packages\PostSharp.Patterns.Threading.Redist.2024.1.6\lib\net45\PostSharp.Patterns.Threading.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
+  <Reference Include="log4net, Version=3.0.3.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+    <HintPath>..\packages\log4net.3.0.3\lib\net462\log4net.dll</HintPath>
+  </Reference>
+  <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+  </Reference>
+  <Reference Include="PostSharp, Version=2024.1.6.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+    <HintPath>..\packages\PostSharp.Redist.2024.1.6\lib\net45\PostSharp.dll</HintPath>
+  </Reference>
+  <Reference Include="PostSharp.Patterns.Aggregation, Version=2024.1.6.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+    <HintPath>..\packages\PostSharp.Patterns.Aggregation.Redist.2024.1.6\lib\net45\PostSharp.Patterns.Aggregation.dll</HintPath>
+  </Reference>
+  <Reference Include="PostSharp.Patterns.Common, Version=2024.1.6.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+    <HintPath>..\packages\PostSharp.Patterns.Common.Redist.2024.1.6\lib\net47\PostSharp.Patterns.Common.dll</HintPath>
+  </Reference>
+  <Reference Include="PostSharp.Patterns.Diagnostics, Version=2024.1.6.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+    <HintPath>..\packages\PostSharp.Patterns.Diagnostics.Redist.2024.1.6\lib\net47\PostSharp.Patterns.Diagnostics.dll</HintPath>
+  </Reference>
+  <Reference Include="PostSharp.Patterns.Diagnostics.Backends.Log4Net, Version=2024.1.6.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+    <HintPath>..\packages\PostSharp.Patterns.Diagnostics.Log4Net.2024.1.6\lib\net45\PostSharp.Patterns.Diagnostics.Backends.Log4Net.dll</HintPath>
+  </Reference>
+  <Reference Include="PostSharp.Patterns.Model, Version=2024.1.6.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+    <HintPath>..\packages\PostSharp.Patterns.Model.Redist.2024.1.6\lib\net45\PostSharp.Patterns.Model.dll</HintPath>
+  </Reference>
+  <Reference Include="PostSharp.Patterns.Threading, Version=2024.1.6.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+    <HintPath>..\packages\PostSharp.Patterns.Threading.Redist.2024.1.6\lib\net45\PostSharp.Patterns.Threading.dll</HintPath>
+  </Reference>
+  <Reference Include="System" />
+  <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="key.snk" />
-    <Compile Include="GlobalAspects.cs" />
-    <Compile Include="IterationErrorEventArgs.cs" />
-    <Compile Include="IterationErrorEventHandler.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="packages.config" />
+  <None Include="key.snk" />
+  <Compile Include="GlobalAspects.cs" />
+  <Compile Include="IterationErrorEventArgs.cs" />
+  <Compile Include="IterationErrorEventHandler.cs" />
+  <Compile Include="Properties\AssemblyInfo.cs" />
+  <Compile Include="Properties\Resources.Designer.cs">
+    <AutoGen>True</AutoGen>
+    <DesignTime>True</DesignTime>
+    <DependentUpon>Resources.resx</DependentUpon>
+  </Compile>
+  <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+  <EmbeddedResource Include="Properties\Resources.resx">
+    <Generator>PublicResXFileCodeGenerator</Generator>
+    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+  </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="1382_cogs.ico" />
+  <Content Include="1382_cogs.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\xyLOGIX.Api.Data.Iterators\xyLOGIX.Api.Data.Iterators.Exceptions\xyLOGIX.Api.Data.Iterators.Exceptions.csproj">
-      <Project>{C86E05F7-04BB-4A45-B264-B3BF976D5B04}</Project>
-      <Name>xyLOGIX.Api.Data.Iterators.Exceptions</Name>
-    </ProjectReference>
+  <ProjectReference Include="..\..\xyLOGIX.Api.Data.Iterators\xyLOGIX.Api.Data.Iterators.Exceptions\xyLOGIX.Api.Data.Iterators.Exceptions.csproj">
+    <Project>{C86E05F7-04BB-4A45-B264-B3BF976D5B04}</Project>
+    <Name>xyLOGIX.Api.Data.Iterators.Exceptions</Name>
+  </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+  <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\PostSharp.2024.1.6\build\PostSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PostSharp.2024.1.6\build\PostSharp.props'))" />
-    <Error Condition="!Exists('..\packages\PostSharp.2024.1.6\build\PostSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PostSharp.2024.1.6\build\PostSharp.targets'))" />
-    <Error Condition="!Exists('..\packages\StrongNamer.0.2.5\build\StrongNamer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StrongNamer.0.2.5\build\StrongNamer.targets'))" />
+  <PropertyGroup>
+    <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+  </PropertyGroup>
+  <Error Condition="!Exists('..\packages\PostSharp.2024.1.6\build\PostSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PostSharp.2024.1.6\build\PostSharp.props'))" />
+  <Error Condition="!Exists('..\packages\PostSharp.2024.1.6\build\PostSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PostSharp.2024.1.6\build\PostSharp.targets'))" />
+  <Error Condition="!Exists('..\packages\StrongNamer.0.2.5\build\StrongNamer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StrongNamer.0.2.5\build\StrongNamer.targets'))" />
   </Target>
   <Import Project="..\packages\PostSharp.2024.1.6\build\PostSharp.targets" Condition="Exists('..\packages\PostSharp.2024.1.6\build\PostSharp.targets')" />
   <Import Project="..\packages\StrongNamer.0.2.5\build\StrongNamer.targets" Condition="Exists('..\packages\StrongNamer.0.2.5\build\StrongNamer.targets')" />
