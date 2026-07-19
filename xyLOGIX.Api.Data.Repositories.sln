@@ -28,7 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		xyLOGIX.Api.Data.Repositories.pssln = xyLOGIX.Api.Data.Repositories.pssln
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Core.Debug", "..\xyLOGIX.Core.Debug.VS2019\xyLOGIX.Core.Debug\xyLOGIX.Core.Debug.csproj", "{C445C052-26B6-4884-9A7B-25DC7ABC0DED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Core.Debug", "..\xyLOGIX.Core.Debug.VS2019\xyLOGIX.Core.Debug\xyLOGIX.Core.Debug.csproj", "{89473237-3313-4D8C-92AB-AB19A4B25476}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Core.Extensions", "..\xyLOGIX.Core.Extensions.VS2019\xyLOGIX.Core.Extensions\xyLOGIX.Core.Extensions.csproj", "{5528D7FB-B88B-4E9D-9BBD-B6B6B893666A}"
 EndProject
@@ -130,14 +130,14 @@ Global
 		{B71D1A36-9468-45A6-8C6D-B60F35BC561A}.Release|x64.Build.0 = Release|x64
 		{B71D1A36-9468-45A6-8C6D-B60F35BC561A}.Release|x86.ActiveCfg = Release|x86
 		{B71D1A36-9468-45A6-8C6D-B60F35BC561A}.Release|x86.Build.0 = Release|x86
-		{C445C052-26B6-4884-9A7B-25DC7ABC0DED}.Debug|x64.ActiveCfg = Debug|x64
-		{C445C052-26B6-4884-9A7B-25DC7ABC0DED}.Debug|x64.Build.0 = Debug|x64
-		{C445C052-26B6-4884-9A7B-25DC7ABC0DED}.Debug|x86.ActiveCfg = Debug|x86
-		{C445C052-26B6-4884-9A7B-25DC7ABC0DED}.Debug|x86.Build.0 = Debug|x86
-		{C445C052-26B6-4884-9A7B-25DC7ABC0DED}.Release|x64.ActiveCfg = Release|x64
-		{C445C052-26B6-4884-9A7B-25DC7ABC0DED}.Release|x64.Build.0 = Release|x64
-		{C445C052-26B6-4884-9A7B-25DC7ABC0DED}.Release|x86.ActiveCfg = Release|x86
-		{C445C052-26B6-4884-9A7B-25DC7ABC0DED}.Release|x86.Build.0 = Release|x86
+		{89473237-3313-4D8C-92AB-AB19A4B25476}.Debug|x64.ActiveCfg = Debug|x64
+		{89473237-3313-4D8C-92AB-AB19A4B25476}.Debug|x64.Build.0 = Debug|x64
+		{89473237-3313-4D8C-92AB-AB19A4B25476}.Debug|x86.ActiveCfg = Debug|x86
+		{89473237-3313-4D8C-92AB-AB19A4B25476}.Debug|x86.Build.0 = Debug|x86
+		{89473237-3313-4D8C-92AB-AB19A4B25476}.Release|x64.ActiveCfg = Release|x64
+		{89473237-3313-4D8C-92AB-AB19A4B25476}.Release|x64.Build.0 = Release|x64
+		{89473237-3313-4D8C-92AB-AB19A4B25476}.Release|x86.ActiveCfg = Release|x86
+		{89473237-3313-4D8C-92AB-AB19A4B25476}.Release|x86.Build.0 = Release|x86
 		{5528D7FB-B88B-4E9D-9BBD-B6B6B893666A}.Debug|x64.ActiveCfg = Debug|x64
 		{5528D7FB-B88B-4E9D-9BBD-B6B6B893666A}.Debug|x64.Build.0 = Debug|x64
 		{5528D7FB-B88B-4E9D-9BBD-B6B6B893666A}.Debug|x86.ActiveCfg = Debug|x86
