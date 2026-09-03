@@ -24,7 +24,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Api.Data.Iterables.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F54C735C-70BE-4500-AD89-BA4B302266D7}"
 	ProjectSection(SolutionItems) = preProject
-		3 Sep 2026 Robust Visual Studio Package Manager Console Automation Script Guidelines Rev E.md = 3 Sep 2026 Robust Visual Studio Package Manager Console Automation Script Guidelines Rev E.md
+		3 Sep 2026 Robust Visual Studio Package Manager Console Automation Script Guidelines Rev F.md = 3 Sep 2026 Robust Visual Studio Package Manager Console Automation Script Guidelines Rev F.md
 		2 Sep 2026 Strip Line Breaks from Comments Configuration Spec Rev B.md = 2 Sep 2026 Strip Line Breaks from Comments Configuration Spec Rev B.md
 		README.md = README.md
 		xyLOGIX.Api.Data.Repositories.pssln = xyLOGIX.Api.Data.Repositories.pssln
